@@ -15,7 +15,7 @@
 			<h1 class="baloo">Jacob Druery</h1>
 			<h2 class="mulish">Creative Developer</h2>
 		</div>
-		<p class="subtitle baloo">Crafting <em>bespoke</em> web experiences</p>
+		<p class="subtitle baloo">Creating engaging experiences for the web</p>
 	</div>
 </section>
 
