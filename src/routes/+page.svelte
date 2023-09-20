@@ -15,11 +15,15 @@
 	// }
 </script>
 
+<svelte:head>
+	<title>Jacob Druery // Creative Developer</title>
+</svelte:head>
 <main>
 	<Hero />
 	<!-- ^ This has garbage performance -->
 	<Blurb />
 	<Projects />
+	<p class="photo-link baloo">...and sometime I take <a href="/treehugger">photos</a></p>
 	<!-- ^ And this has garbager performance -->
 	<About />
 	<Tech />
@@ -37,6 +41,14 @@
 		main {
 			padding: 2rem;
 		}
+	}
+
+	p.photo-link {
+		text-align: center;
+	}
+
+	p.photo-link a {
+		text-decoration: underline;
 	}
 
 	/* Breakpoints 320, 640, 768, 1024, 1280, 1536, 1920 */
