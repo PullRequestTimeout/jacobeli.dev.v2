@@ -1,15 +1,11 @@
 <script>
 	// Imports
-	import MouseEffect from '$lib/components/MouseEffect.svelte';
-	import Overlay from '$lib/components/Overlay.svelte';
-	import Navbar from '$lib/components/Navbar.svelte';
-	import Hero from '$lib/components/Hero.svelte';
-	import Blurb from '$lib/components/Blurb.svelte';
-	import About from '$lib/components/About.svelte';
-	import Projects from '$lib/components/Projects.svelte';
-	import Footer from '$lib/components/Footer.svelte';
-	import Tech from '$lib/components/Tech.svelte';
-	import Loading from '$lib/components/Loading.svelte';
+	import Hero from "$lib/components/Hero.svelte";
+	import Blurb from "$lib/components/Blurb.svelte";
+	import About from "$lib/components/About.svelte";
+	import Projects from "$lib/components/Projects.svelte";
+	import Tech from "$lib/components/Tech.svelte";
+	import Loading from "$lib/components/Loading.svelte";
 
 	// Remove history state and load website with scroll at top
 	// window.history.replaceState({}, document.title, '/');
@@ -19,8 +15,6 @@
 	// }
 </script>
 
-<!-- Move these to +layout -->
-<Navbar />
 <main>
 	<Hero />
 	<!-- ^ This has garbage performance -->
@@ -30,10 +24,6 @@
 	<About />
 	<Tech />
 </main>
-<Footer />
-
-<Overlay />
-<MouseEffect />
 
 <!-- <Loading /> -->
 <!-- There's gotta be a more elegant way of doing this... -->
