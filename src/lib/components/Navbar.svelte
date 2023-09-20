@@ -41,7 +41,7 @@
 	nav ul {
 		display: flex;
 		gap: 1rem;
-		padding: 1rem;
+		padding: 0 1rem;
 	}
 
 	nav ul li a {
