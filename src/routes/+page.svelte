@@ -19,11 +19,14 @@
 	// }
 </script>
 
+<!-- Move these to +layout -->
 <Navbar />
 <main>
 	<Hero />
+	<!-- ^ This has garbage performance -->
 	<Blurb />
 	<Projects />
+	<!-- ^ And this has garbager performance -->
 	<About />
 	<Tech />
 </main>
@@ -31,7 +34,9 @@
 
 <Overlay />
 <MouseEffect />
-<Loading />
+
+<!-- <Loading /> -->
+<!-- There's gotta be a more elegant way of doing this... -->
 
 <style>
 	main {
