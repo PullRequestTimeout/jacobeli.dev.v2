@@ -57,7 +57,7 @@
 <style>
 	div.container {
 		position: relative;
-		width: 30%;
+		width: 100%;
 	}
 
 	div.container > button {
