@@ -52,9 +52,15 @@
 		opacity: 0.2;
 	}
 
-	@media screen and (min-width: 1024px) {
+	@media screen and (min-width: 1280px) {
 		.mouse {
 			display: unset;
+		}
+	}
+
+	@media (prefers-reduced-motion) {
+		.mouse {
+			display: none;
 		}
 	}
 </style>
