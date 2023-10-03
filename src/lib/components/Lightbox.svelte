@@ -24,6 +24,7 @@
 				alt={`Image number ${imageNumber} from the event.`}
 				loading="lazy"
 				class:intersect={intersecting}
+				oncontextmenu="return false;"
 			/>
 		</button>
 	</div>
@@ -44,6 +45,8 @@
 			<img
 				src={`/assets/treehugger/DSC${imageNumber}.jpg`}
 				alt={`Image number ${imageNumber} from the event.`}
+				loading="lazy"
+				oncontextmenu="return false;"
 			/>
 			<p class="mulish">{imageNumber}</p>
 			<button on:click={closeLightbox} />
