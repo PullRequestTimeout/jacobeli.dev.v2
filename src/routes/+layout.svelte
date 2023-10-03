@@ -9,4 +9,4 @@
 <slot />
 <Footer />
 <Overlay />
-<!-- <MouseEffect /> -->
+<MouseEffect />
