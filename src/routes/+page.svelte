@@ -23,7 +23,7 @@
 	<!-- ^ This has garbage performance -->
 	<Blurb />
 	<Projects />
-	<p class="photo-link baloo">...and sometime I take <a href="/treehugger">photos</a></p>
+	<p class="photo-link baloo">...and sometimes I take <a href="/treehugger">photos</a></p>
 	<!-- ^ And this has garbager performance -->
 	<About />
 	<Tech />
