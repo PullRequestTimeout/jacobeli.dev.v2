@@ -1,15 +1,28 @@
 <script>
 	import IntersectionObserver from "svelte-intersection-observer";
 	import { fade } from "svelte/transition";
+	import { photoStore } from "$lib/photoStore.js";
+	import IconButton from "../../routes/treehugger/IconButton.svelte";
 
 	export let imageNumber = "";
 
 	let element;
 
 	let lightboxOpen = false;
-	const closeLightbox = () => {
+	function closeLightbox() {
 		lightboxOpen = false;
-	};
+	}
+
+	$: if (lightboxOpen) {
+		document.querySelector("body").style.overflow = "hidden";
+	}
+
+	function addToPurchase(imgNo) {
+		// Converting to a set and back ensures no duplicate photos
+		const addToArr = [...$photoStore, imgNo];
+		const set = new Set(addToArr);
+		$photoStore = Array.from(set);
+	}
 </script>
 
 <IntersectionObserver once rootMargin={"5px"} threshold={0.25} {element} let:intersecting>
@@ -35,11 +48,6 @@
 		class="overlay"
 		role="presentation"
 		on:click={closeLightbox}
-		on:keydown={(e) => {
-			if (e.key === "Escape") {
-				closeLightbox();
-			}
-		}}
 	>
 		<div class="lightbox">
 			<img
@@ -48,8 +56,14 @@
 				loading="lazy"
 				oncontextmenu="return false;"
 			/>
-			<p class="mulish">{imageNumber}</p>
-			<button on:click={closeLightbox} />
+			<div class="info">
+				<p class="mulish">#{imageNumber}</p>
+				<IconButton
+					callback={() => addToPurchase(imageNumber)}
+					innerText="Add To Purchase Request"
+				/>
+			</div>
+			<button class="close" on:click={closeLightbox} />
 		</div>
 	</div>
 {/if}
@@ -106,23 +120,25 @@
 		max-height: 85vh;
 	}
 
-	div.lightbox p {
-		text-align: center;
+	div.lightbox div.info {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
 	}
 
-	div.lightbox button {
+	div.lightbox button.close {
 		cursor: pointer;
 		background-color: transparent;
 		border: none;
 		position: absolute;
-		top: -3rem;
-		right: 0;
-		height: 2rem;
+		top: 0.5rem;
+		right: 0.5rem;
+		height: 1rem;
 		aspect-ratio: 1;
 	}
 
-	div.lightbox button::after,
-	div.lightbox button::before {
+	div.lightbox button.close::after,
+	div.lightbox button.close::before {
 		position: absolute;
 		content: "";
 		height: 2px;
@@ -131,22 +147,18 @@
 		left: 0;
 	}
 
-	div.lightbox button::after {
+	div.lightbox button.close::after {
 		rotate: 45deg;
 	}
 
-	div.lightbox button::before {
+	div.lightbox button.close::before {
 		rotate: -45deg;
 	}
 
 	@media screen and (min-width: 768px) {
-		/* div.container {
-            width: ;
-        } */
-
-		div.lightbox button {
+		div.lightbox button.close {
 			top: 0;
-			right: -3rem;
+			right: -1.5rem;
 		}
 	}
 </style>
