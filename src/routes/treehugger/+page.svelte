@@ -7,7 +7,7 @@
 
 	export let data;
 
-	let [minColWidth, maxColWidth, gap] = [300, 600, 32];
+	let [minColWidth, maxColWidth, gap] = [250, 500, 16];
 	let width, height;
 </script>
 
