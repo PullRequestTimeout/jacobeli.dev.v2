@@ -2,6 +2,7 @@
 	import { fade } from "svelte/transition";
 	import { photoStore } from "$lib/photoStore.js";
 	import IconButton from "./IconButton.svelte";
+	import { clickOutside } from "$lib/clickOutside.js";
 
 	let photoMenuOpen = false;
 	function handlePhotoMenu() {
@@ -29,39 +30,46 @@ Thanks!`;
 	}
 </script>
 
-{#if $photoStore.length > 0}
-	<button
-		transition:fade={{ duration: 200 }}
-		class="mail"
-		on:click={handlePhotoMenu}
-		aria-label="Open photo request menu"
-	>
-		<img src="/assets/email.svg" alt="Email icon" />
-		<div class="photo-count baloo">{$photoStore.length}</div>
-	</button>
-{/if}
-{#if $photoStore.length > 0 && photoMenuOpen}
-	<div transition:fade={{ duration: 200 }} class="photo-menu">
-		{#each $photoStore as photo}
-			<div class="photo-list-item">
-				<p class="baloo">#{photo}</p>
-				<button
-					class="remove-photo"
-					on:click={() => {
-						$photoStore = $photoStore.filter((n) => n !== photo);
-					}}
-				>
-					<img src="/assets/remove.svg" alt="Remove icon" />
-				</button>
+<div
+	use:clickOutside
+	on:click_outside={() => {
+		photoMenuOpen = false;
+	}}
+>
+	{#if $photoStore.length > 0}
+		<button
+			transition:fade={{ duration: 200 }}
+			class="mail"
+			on:click={handlePhotoMenu}
+			aria-label="Open photo request menu"
+		>
+			<img src="/assets/email.svg" alt="Email icon" />
+			<div class="photo-count baloo">{$photoStore.length}</div>
+		</button>
+	{/if}
+	{#if $photoStore.length > 0 && photoMenuOpen}
+		<div transition:fade={{ duration: 200 }} class="photo-menu">
+			{#each $photoStore as photo}
+				<div class="photo-list-item">
+					<p class="baloo">#{photo}</p>
+					<button
+						class="remove-photo"
+						on:click={() => {
+							$photoStore = $photoStore.filter((n) => n !== photo);
+						}}
+					>
+						<img src="/assets/remove.svg" alt="Remove icon" />
+					</button>
+				</div>
+			{/each}
+			<div class="hr" />
+			<p class="baloo">Price: ${$photoStore.length * 15}</p>
+			<div class="btn-wrap">
+				<IconButton innerText="Request Photos" invert mail callback={purchaseRequestEmail} />
 			</div>
-		{/each}
-		<div class="hr" />
-		<p class="baloo">Price: ${$photoStore.length * 15}</p>
-		<div class="btn-wrap">
-			<IconButton innerText="Request Photos" invert mail callback={purchaseRequestEmail} />
 		</div>
-	</div>
-{/if}
+	{/if}
+</div>
 
 <style>
 	button.mail {

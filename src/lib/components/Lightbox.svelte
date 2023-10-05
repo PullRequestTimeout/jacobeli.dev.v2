@@ -2,6 +2,7 @@
 	import IntersectionObserver from "svelte-intersection-observer";
 	import { fade } from "svelte/transition";
 	import { photoStore } from "$lib/photoStore.js";
+	import { clickOutside } from "$lib/clickOutside.js";
 	import IconButton from "../../routes/treehugger/IconButton.svelte";
 
 	export let imageNumber = "";
@@ -13,15 +14,13 @@
 		lightboxOpen = false;
 	}
 
-	$: if (lightboxOpen) {
-		document.querySelector("body").style.overflow = "hidden";
-	}
-
 	function addToPurchase(imgNo) {
 		// Converting to a set and back ensures no duplicate photos
 		const addToArr = [...$photoStore, imgNo];
 		const set = new Set(addToArr);
 		$photoStore = Array.from(set);
+		// close lightbox after button
+		lightboxOpen = false;
 	}
 </script>
 
@@ -43,13 +42,14 @@
 	</div>
 </IntersectionObserver>
 {#if lightboxOpen}
-	<div
-		transition:fade={{ duration: 200 }}
-		class="overlay"
-		role="presentation"
-		on:click={closeLightbox}
-	>
-		<div class="lightbox">
+	<div transition:fade={{ duration: 200 }} class="overlay" role="presentation">
+		<div
+			class="lightbox"
+			use:clickOutside
+			on:click_outside={() => {
+				lightboxOpen = false;
+			}}
+		>
 			<img
 				src={`/assets/treehugger/DSC${imageNumber}.jpg`}
 				alt={`Image number ${imageNumber} from the event.`}
