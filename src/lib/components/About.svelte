@@ -14,7 +14,8 @@
 			I'm always looking for a new challenge and am constantly pushing myself to find new skills to
 			learn. Let's connect and create something amazing together!
 		</p>
-		<FancyLink innerText="Download Resume" orientation="down" url="/JacobDrueryResume.pdf" />
+		<!-- <FancyLink innerText="Download Resume" orientation="down" url="/JacobDrueryResume.pdf" /> -->
+		<FancyLink orientation="up" innerText="Get In Contact" url="#contact" />
 	</div>
 </section>
 
