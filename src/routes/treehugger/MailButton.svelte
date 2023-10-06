@@ -160,7 +160,7 @@ Thanks!`;
 		cursor: pointer;
 		background-color: transparent;
 		height: 1.5rem;
-		height: 1.5rem;
+		width: 1.5rem;
 		/* aspect-ratio: 1; */
 		border-radius: 50%;
 		transition-duration: 0.2s;
