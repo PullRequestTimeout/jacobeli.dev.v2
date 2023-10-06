@@ -1,15 +1,15 @@
 <script>
 	// import { browser } from '$app/environment';
-	import { onMount } from 'svelte';
+	// import { onMount } from "svelte";
 
-	let vh;
+	// let vh;
 
-	onMount(() => {
-		vh = window.innerHeight;
-	});
+	// onMount(() => {
+	// 	vh = window.innerHeight;
+	// });
 </script>
 
-<section style="--vh-px: {`${vh}px`};">
+<section>
 	<div class="container">
 		<div class="title">
 			<h1 class="baloo">Jacob Druery</h1>
@@ -21,7 +21,7 @@
 
 <style>
 	section {
-		height: calc(var(--vh-px, 100vh) - 8rem);
+		height: calc(100dvh - 8rem);
 		display: grid;
 		align-items: end;
 	}
@@ -62,7 +62,7 @@
 
 	@media screen and (min-width: 768px) {
 		section {
-			height: calc(var(--vh-px, 100vh) - 14rem);
+			height: calc(100dvh - 12rem);
 		}
 
 		.container {
