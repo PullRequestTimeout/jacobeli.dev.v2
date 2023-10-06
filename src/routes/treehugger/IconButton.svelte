@@ -33,6 +33,7 @@
 		position: relative;
 		z-index: 304;
 		user-select: none;
+		transition-duration: 0.2s;
 	}
 
 	.button:hover {
@@ -84,6 +85,12 @@
 	.button:active {
 		background-color: var(--clr-gold);
 		color: var(--clr-white);
+	}
+
+	.button.mail:hover span,
+	.button.mail:focus span,
+	.button.mail:active span {
+		transform: translateX(0.75rem);
 	}
 
 	.button:hover::before,
