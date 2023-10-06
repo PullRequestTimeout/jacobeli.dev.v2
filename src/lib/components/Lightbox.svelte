@@ -24,7 +24,7 @@
 	}
 </script>
 
-<IntersectionObserver once rootMargin={"5px"} threshold={0.25} {element} let:intersecting>
+<IntersectionObserver once rootMargin={"5px"} threshold={0.1} {element} let:intersecting>
 	<div class="container" bind:this={element}>
 		<button
 			on:click={() => {
@@ -84,7 +84,7 @@
 		width: 100%;
 		opacity: 0;
 		translate: -1rem 1rem;
-		transition-duration: 0.25s;
+		transition-duration: 0.2s;
 	}
 
 	div.container img:hover {
@@ -97,6 +97,7 @@
 	}
 
 	div.overlay {
+		touch-action: none;
 		position: fixed;
 		z-index: 10;
 		top: 0;
@@ -118,6 +119,13 @@
 		aspect-ratio: initial;
 		max-width: 90vw;
 		max-height: 85vh;
+	}
+
+	div.lightbox > img,
+	div.container img {
+		user-select: none;
+		-webkit-user-select: none;
+		-webkit-touch-callout: none;
 	}
 
 	div.lightbox div.info {
