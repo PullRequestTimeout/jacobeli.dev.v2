@@ -4,6 +4,7 @@
 	import MailButton from "./MailButton.svelte";
 	import Lightbox from "$lib/components/Lightbox.svelte";
 	import PhotoHero from "./PhotoHero.svelte";
+	import Disclaimer from "./Disclaimer.svelte";
 
 	export let data;
 
@@ -31,6 +32,7 @@
 	</section>
 </main>
 <MailButton />
+<Disclaimer />
 
 <style>
 	section.gallery {
