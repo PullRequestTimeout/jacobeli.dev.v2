@@ -6,13 +6,6 @@
 	import Projects from "$lib/components/Projects.svelte";
 	import Tech from "$lib/components/Tech.svelte";
 	import Loading from "$lib/components/Loading.svelte";
-
-	// Remove history state and load website with scroll at top
-	// window.history.replaceState({}, document.title, '/');
-	// setTimeout(() => window.scrollTo(0, 0), 100);
-	// if ('scrollRestoration' in history) {
-	// 	history.scrollRestoration = 'manual';
-	// }
 </script>
 
 <svelte:head>
@@ -23,8 +16,8 @@
 	<!-- ^ This has garbage performance -->
 	<Blurb />
 	<Projects />
-	<p class="photo-link baloo">...and sometimes I take <a href="/treehugger">photos</a></p>
 	<!-- ^ And this has garbager performance -->
+	<p class="photo-link baloo">...and sometimes I take <a href="/treehugger">photos</a></p>
 	<About />
 	<Tech />
 </main>
@@ -45,6 +38,7 @@
 
 	p.photo-link {
 		text-align: center;
+		font-size: 1.2rem;
 	}
 
 	p.photo-link a {
