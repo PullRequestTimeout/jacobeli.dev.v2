@@ -176,12 +176,13 @@ Thanks!`;
 	div.btn-wrap {
 		display: flex;
 		justify-content: center;
-		margin-top: 1rem;
+		margin-top: 0.5rem;
 		box-shadow: #000000a4;
 	}
 
 	.hr {
 		border-bottom: solid 2px var(--clr-black);
 		opacity: 0.75;
+		margin-top: 1rem;
 	}
 </style>
