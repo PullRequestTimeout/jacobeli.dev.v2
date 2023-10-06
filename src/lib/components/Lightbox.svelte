@@ -53,7 +53,6 @@
 			<img
 				src={`/assets/treehugger/DSC${imageNumber}.jpg`}
 				alt={`Image number ${imageNumber} from the event.`}
-				loading="lazy"
 				oncontextmenu="return false;"
 			/>
 			<div class="info">
