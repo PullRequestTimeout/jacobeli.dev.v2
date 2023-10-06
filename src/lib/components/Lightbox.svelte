@@ -141,7 +141,8 @@
 		top: 0.5rem;
 		right: 0.5rem;
 		height: 1rem;
-		aspect-ratio: 1;
+		width: 1rem;
+		/* aspect-ratio: 1; */
 	}
 
 	div.lightbox button.close::after,

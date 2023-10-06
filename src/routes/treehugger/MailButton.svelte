@@ -105,7 +105,8 @@ Thanks!`;
 		color: var(--clr-black);
 		padding: 0.25rem;
 		width: 1.5rem;
-		aspect-ratio: 1;
+		height: 1.5rem;
+		/* aspect-ratio: 1; */
 		border-radius: 50%;
 		top: -20%;
 		right: -20%;
@@ -159,7 +160,8 @@ Thanks!`;
 		cursor: pointer;
 		background-color: transparent;
 		height: 1.5rem;
-		aspect-ratio: 1;
+		height: 1.5rem;
+		/* aspect-ratio: 1; */
 		border-radius: 50%;
 		transition-duration: 0.2s;
 	}
