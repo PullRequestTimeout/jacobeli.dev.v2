@@ -18,6 +18,15 @@
 		dispatch("close");
 	}
 
+	// Preload image before component mounts
+	function preload(src) {
+		return new Promise(function (resolve) {
+			let img = new Image();
+			img.onload = resolve;
+			img.src = src;
+		});
+	}
+
 	function swipeClosed(element) {
 		let touchStartY = 0;
 		let touchEndY = 0;
@@ -47,20 +56,22 @@
 	}
 </script>
 
-{#if open}
-	<article transition:fly={{ y: 50, duration: 500, delay: 200 }} use:swipeClosed>
-		<button on:click={handleClose} aria-label="close" />
-		<img src={image} alt={"Mockup of " + title} />
-		<div>
-			<h2 class="mulish">{title}</h2>
-			<h3 class="mulish">{subtitle}</h3>
-			<p class="mulish">// {date}</p>
-			<hr />
-			<p class="baloo">{description}</p>
-			<FancyLink url={link} innerText={"View Live"} orientation="up" invert />
-		</div>
-	</article>
-{/if}
+{#await preload(image) then _}
+	{#if open}
+		<article transition:fly={{ y: 50, duration: 500 }} use:swipeClosed>
+			<button on:click={handleClose} aria-label="close" />
+			<img src={image} alt={"Mockup of " + title} />
+			<div>
+				<h2 class="mulish">{title}</h2>
+				<h3 class="mulish">{subtitle}</h3>
+				<p class="mulish">// {date}</p>
+				<hr />
+				<p class="baloo">{description}</p>
+				<FancyLink url={link} innerText={"View Live"} orientation="up" invert />
+			</div>
+		</article>
+	{/if}
+{/await}
 
 <style>
 	article {
