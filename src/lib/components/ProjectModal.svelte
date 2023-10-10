@@ -10,10 +10,9 @@
 	export let image;
 	export let link;
 
+	// Open this and close others
 	export let open = false;
-
 	const dispatch = createEventDispatcher();
-
 	function handleClose() {
 		open = false;
 		dispatch("close");
@@ -47,6 +46,10 @@
 		}
 	}
 </script>
+
+<svelte:head>
+	<link rel="preload" as="image" href={image} />
+</svelte:head>
 
 {#if open}
 	<article transition:fly={{ y: 50, duration: 500 }} use:swipeClosed>
