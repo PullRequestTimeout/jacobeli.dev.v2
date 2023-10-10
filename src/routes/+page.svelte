@@ -30,19 +30,23 @@
 		padding: 1rem;
 	}
 
-	@media screen and (min-width: 768px) {
-		main {
-			padding: 2rem;
-		}
-	}
-
 	p.photo-link {
 		text-align: center;
-		font-size: 1.2rem;
+		font-size: 1rem;
 	}
 
 	p.photo-link a {
 		text-decoration: underline;
+	}
+
+	@media screen and (min-width: 768px) {
+		main {
+			padding: 2rem;
+		}
+
+		p.photo-link {
+			font-size: 1.2rem;
+		}
 	}
 
 	/* Breakpoints 320, 640, 768, 1024, 1280, 1536, 1920 */
