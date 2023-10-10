@@ -47,12 +47,8 @@
 	}
 </script>
 
-<svelte:head>
-	<link rel="preload" as="image" href={image} />
-</svelte:head>
-
 {#if open}
-	<article transition:fly={{ y: 50, duration: 500 }} use:swipeClosed>
+	<article transition:fly={{ y: 50, duration: 500, delay: 200 }} use:swipeClosed>
 		<button on:click={handleClose} aria-label="close" />
 		<img src={image} alt={"Mockup of " + title} />
 		<div>
