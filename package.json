@@ -22,6 +22,6 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"svelte-bricks": "^0.2.1"
+		"@egjs/svelte-grid": "^1.14.2"
 	}
 }

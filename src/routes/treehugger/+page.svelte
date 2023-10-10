@@ -1,15 +1,21 @@
 <script>
-	import Masonry from "svelte-bricks";
-
 	import MailButton from "./MailButton.svelte";
 	import Lightbox from "$lib/components/Lightbox.svelte";
 	import PhotoHero from "./PhotoHero.svelte";
 	import Disclaimer from "./Disclaimer.svelte";
 
-	export let data;
+	// New Masonry component
+	import { MasonryGrid } from "@egjs/svelte-grid";
+	const gap = 12;
+	const defaultDirection = "end";
+	const align = "stretch";
+	const column = 0;
+	const columnSize = 100;
+	const columnSizeRatio = 0;
+	const maxStretchColumnSize = 350;
 
-	let [minColWidth, maxColWidth, gap] = [250, 500, 16];
-	let width, height;
+	export let data;
+	const imageArray = data.imgNumberArray;
 </script>
 
 <svelte:head>
@@ -18,17 +24,22 @@
 <main>
 	<PhotoHero subtitle={"// Treehugger hare scramble 2023"} />
 	<section class="gallery">
-		<Masonry
-			items={data.imgNumberArray}
-			{minColWidth}
-			{maxColWidth}
+		<MasonryGrid
+			class="container"
+			{defaultDirection}
 			{gap}
-			let:item
-			bind:masonryWidth={width}
-			bind:masonryHeight={height}
+			{align}
+			{column}
+			{columnSize}
+			{columnSizeRatio}
+			{maxStretchColumnSize}
 		>
-			<Lightbox imageNumber={item} />
-		</Masonry>
+			{#each imageArray as image}
+				<div class="item">
+					<Lightbox imageNumber={image} />
+				</div>
+			{/each}
+		</MasonryGrid>
 	</section>
 </main>
 <MailButton />

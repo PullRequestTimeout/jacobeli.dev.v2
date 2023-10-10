@@ -32,6 +32,7 @@
 			}}
 		>
 			<img
+				width="100"
 				src={`/assets/treehugger/DSC${imageNumber}.jpg`}
 				alt={`Image number ${imageNumber} from the event.`}
 				loading="lazy"
