@@ -12,8 +12,6 @@
 	export let link;
 	export let checked = false;
 
-	$: console.log(checked);
-
 	const handleClose = () => {
 		checked = false;
 	};
