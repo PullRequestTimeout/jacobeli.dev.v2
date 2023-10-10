@@ -1,5 +1,6 @@
 <script>
 	import { createEventDispatcher, onMount } from "svelte";
+	import { fly } from "svelte/transition";
 	import FancyLink from "./FancyLink.svelte";
 
 	export let title;
@@ -18,13 +19,11 @@
 		dispatch("close");
 	}
 
-	let touchStartY = 0;
-	let touchEndY = 0;
+	function swipeClosed(element) {
+		let touchStartY = 0;
+		let touchEndY = 0;
 
-	let gestureZone;
-
-	onMount(() => {
-		gestureZone.addEventListener(
+		element.addEventListener(
 			"touchstart",
 			function (event) {
 				touchStartY = event.changedTouches[0].screenY;
@@ -32,7 +31,7 @@
 			{ passive: true }
 		);
 
-		gestureZone.addEventListener(
+		element.addEventListener(
 			"touchend",
 			function (event) {
 				touchEndY = event.changedTouches[0].screenY;
@@ -40,28 +39,29 @@
 			},
 			{ passive: true }
 		);
-	});
 
-	function handleGesture() {
-		if (touchEndY > touchStartY && touchEndY - touchStartY > 20) {
-			handleClose();
+		function handleGesture() {
+			if (touchEndY > touchStartY && touchEndY - touchStartY > 20) {
+				handleClose();
+			}
 		}
 	}
 </script>
 
-<div class="blur" class:open />
-<article class:open bind:this={gestureZone}>
-	<button on:click={handleClose} aria-label="close" />
-	<img src={image} alt={"Mockup of " + title} />
-	<div>
-		<h2 class="mulish">{title}</h2>
-		<h3 class="mulish">{subtitle}</h3>
-		<p class="mulish">// {date}</p>
-		<hr />
-		<p class="baloo">{description}</p>
-		<FancyLink url={link} innerText={"View Live"} orientation="up" invert />
-	</div>
-</article>
+{#if open}
+	<article transition:fly={{ y: 50, duration: 500 }} use:swipeClosed>
+		<button on:click={handleClose} aria-label="close" />
+		<img src={image} alt={"Mockup of " + title} />
+		<div>
+			<h2 class="mulish">{title}</h2>
+			<h3 class="mulish">{subtitle}</h3>
+			<p class="mulish">// {date}</p>
+			<hr />
+			<p class="baloo">{description}</p>
+			<FancyLink url={link} innerText={"View Live"} orientation="up" invert />
+		</div>
+	</article>
+{/if}
 
 <style>
 	article {
@@ -73,23 +73,8 @@
 		top: 0;
 		left: 0;
 		background-color: var(--clr-white);
-		transform: translateY(20%);
-		opacity: 0;
 		transition: 0.4s ease-out;
 		overflow-y: scroll;
-		pointer-events: none;
-	}
-
-	.blur {
-		pointer-events: none;
-		position: fixed;
-		z-index: 499;
-		top: 0;
-		left: 0;
-		width: 100vw;
-		height: 100dvh;
-		backdrop-filter: blur(0);
-		transition: 0.5s ease-in-out;
 	}
 
 	hr {
@@ -158,16 +143,6 @@
 		transform: rotate(-45deg);
 	}
 
-	article.open {
-		transform: translateY(-1px);
-		opacity: 1;
-		pointer-events: all;
-	}
-
-	.blur.open {
-		backdrop-filter: blur(1rem);
-	}
-
 	@media screen and (min-width: 768px) {
 		div {
 			padding: 2rem;
@@ -175,8 +150,7 @@
 	}
 
 	@media screen and (min-width: 1024px) {
-		article,
-		.blur {
+		article {
 			display: none;
 		}
 	}
