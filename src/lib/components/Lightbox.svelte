@@ -86,10 +86,6 @@
 		transition-duration: 0.2s;
 	}
 
-	div.container img:hover {
-		transform: translateY(-5px);
-	}
-
 	div.container img.intersect {
 		opacity: 1;
 		translate: 0;
@@ -99,9 +95,9 @@
 		touch-action: none;
 		position: fixed;
 		z-index: 10;
-		top: 0;
+		top: -1px;
 		left: 0;
-		height: 100vh;
+		height: calc(100dvh + 1px);
 		width: 100%;
 		background-color: #000000da;
 		display: grid;
@@ -167,6 +163,12 @@
 		div.lightbox button.close {
 			top: 0;
 			right: -1.5rem;
+		}
+	}
+
+	@media (hover: hover) {
+		div.container img:hover {
+			transform: translateY(-5px);
 		}
 	}
 </style>
