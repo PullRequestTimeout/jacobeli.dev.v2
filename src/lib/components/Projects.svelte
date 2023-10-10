@@ -9,6 +9,13 @@
 	}
 </script>
 
+<!-- Preload images for projects -->
+<svelte:head>
+	{#each projects as project}
+		<link rel="preload" as="image" href={project.image} />
+	{/each}
+</svelte:head>
+
 <section>
 	<Title innerText="Selected Works" id="work" />
 	{#each projects as project, index}
