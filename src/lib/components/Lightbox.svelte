@@ -97,9 +97,9 @@
 		touch-action: none;
 		position: fixed;
 		z-index: 10;
-		top: -1px;
+		top: -1rem;
 		left: 0;
-		height: calc(100dvh + 1px);
+		height: calc(100dvh + 2rem);
 		width: 100%;
 		background-color: #000000da;
 		display: grid;
