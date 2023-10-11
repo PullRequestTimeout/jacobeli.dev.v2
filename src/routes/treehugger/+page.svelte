@@ -6,7 +6,7 @@
 
 	// New Masonry component
 	import { MasonryGrid } from "@egjs/svelte-grid";
-	const gap = 12;
+	const gap = 16;
 	const defaultDirection = "end";
 	const align = "stretch";
 	const column = 0;

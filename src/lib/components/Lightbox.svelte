@@ -34,7 +34,7 @@
 			<img
 				width="100"
 				src={`/assets/treehugger/DSC${imageNumber}.jpg`}
-				alt={`Image number ${imageNumber} from the event.`}
+				alt={`Image button opens ${imageNumber} lightbox.`}
 				loading="lazy"
 				class:intersect={intersecting}
 				oncontextmenu="return false;"
@@ -78,6 +78,7 @@
 		background-color: transparent;
 		border: none;
 		cursor: pointer;
+		padding: 0;
 	}
 
 	div.container img {
