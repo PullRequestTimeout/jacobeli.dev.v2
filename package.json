@@ -22,6 +22,8 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@egjs/svelte-grid": "^1.14.2"
+		"@egjs/svelte-grid": "^1.14.2",
+		"embla-carousel-class-names": "^8.0.0-rc14",
+		"embla-carousel-svelte": "^8.0.0-rc14"
 	}
 }

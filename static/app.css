@@ -189,3 +189,12 @@ section {
 		padding: 2rem 0;
 	}
 }
+
+/* Embla Carousel Config  */
+.is-in-view {
+	opacity: 0.15;
+}
+
+.is-in-view.is-snapped {
+	opacity: 1;
+}
