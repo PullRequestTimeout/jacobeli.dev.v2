@@ -4,12 +4,12 @@
 	import { setupTweenOpacity } from "./tweenOpacity.js";
 
 	// Add file names to lengthen slideshow
-	const images = ["DSC02627.jpg", "DSC03363.jpg", "DSC08900.jpg"];
+	const images = ["DSC02627.jpg", "DSC03363.jpg", "DSC08900.jpg", "DSC01741.jpg"];
 
 	let emblaApi;
 	const options = { loop: true };
-	const classNameOptions = { selected: "my-selected-class" };
-	let plugins = [ClassNames(classNameOptions)];
+	let plugins = [ClassNames()];
+	let resize;
 
 	const onInit = (event) => {
 		emblaApi = event.detail;
@@ -22,27 +22,38 @@
 	};
 </script>
 
-<section class="embla" use:emblaCarouselSvelte={{ options, plugins }} on:emblaInit={onInit}>
-	<div class="embla__container">
-		{#each images as image, i}
-			<img
-				src={`/assets/carousel/${image}`}
-				alt={`Image number ${i + 1} of the carousel.`}
-				class="embla__slide"
-			/>
-		{/each}
-	</div>
-	<button class="embla__prev" on:click={emblaApi.scrollPrev} aria-label="Carousel Previous">
-		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"
-			><path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z" /></svg
-		></button
-	>
-	<button class="embla__next" on:click={emblaApi.scrollNext} aria-label="Carousel Next">
-		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"
-			><path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z" /></svg
-		></button
-	>
-</section>
+<!-- rerender component on window resize to stop carousel items from disappearring -->
+<svelte:window
+	on:resize={() => {
+		setTimeout(() => {
+			resize = window.innerWidth;
+		}, 500);
+	}}
+/>
+
+{#key resize}
+	<section class="embla" use:emblaCarouselSvelte={{ options, plugins }} on:emblaInit={onInit}>
+		<div class="embla__container">
+			{#each images as image, i}
+				<img
+					src={`/assets/carousel/${image}`}
+					alt={`Image number ${i + 1} of the carousel.`}
+					class="embla__slide"
+				/>
+			{/each}
+		</div>
+		<button class="embla__prev" on:click={emblaApi.scrollPrev} aria-label="Carousel Previous">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"
+				><path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z" /></svg
+			></button
+		>
+		<button class="embla__next" on:click={emblaApi.scrollNext} aria-label="Carousel Next">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"
+				><path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z" /></svg
+			></button
+		>
+	</section>
+{/key}
 
 <style>
 	section.embla {
@@ -98,7 +109,6 @@
 		}
 
 		section.embla > button:hover > svg,
-		section.embla > button:focus > svg,
 		section.embla > button:active > svg {
 			opacity: 1;
 		}
