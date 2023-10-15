@@ -18,7 +18,7 @@
 		><span>{innerText}</span></a
 	>
 {:else}
-	<a href={url} class="button baloo" class:invert target="_blank" style="--rotate: {`${rotate}deg`}"
+	<a href={url} class="button baloo" class:invert style="--rotate: {`${rotate}deg`}"
 		><span>{innerText}</span></a
 	>
 {/if}
