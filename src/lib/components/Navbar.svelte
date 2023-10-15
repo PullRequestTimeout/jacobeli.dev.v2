@@ -20,6 +20,17 @@
 				<li><a on:click={uncheck} href="#contact">CONTACT</a></li>
 			</ul>
 		</nav>
+	{:else}
+		<input type="checkbox" id="navCheckbox" bind:checked />
+		<label for="navCheckbox" />
+
+		<nav>
+			<ul>
+				<li><a on:click={uncheck} href="/">HOME</a></li>
+				<li><a on:click={uncheck} href="/photos">PHOTOS</a></li>
+				<li><a on:click={uncheck} href="#contact">CONTACT</a></li>
+			</ul>
+		</nav>
 	{/if}
 </header>
 
