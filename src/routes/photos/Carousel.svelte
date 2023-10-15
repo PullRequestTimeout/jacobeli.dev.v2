@@ -66,9 +66,9 @@
 	}
 
 	img.embla__slide {
-		flex: 0 0 80%;
+		flex: 0 0 100%;
 		min-width: 0;
-		padding: 0 1rem;
+		padding: 0 0.5rem;
 	}
 
 	section.embla > button {
@@ -81,13 +81,13 @@
 		justify-content: center;
 		background-color: transparent;
 		translate: 0 -50%;
-		padding: 1rem;
+		padding: 0.5rem;
 	}
 
 	section.embla > button > svg {
 		fill: #fff;
-		width: 3rem;
-		height: 3rem;
+		width: 2rem;
+		height: 2rem;
 	}
 
 	button.embla__next {
@@ -100,6 +100,18 @@
 
 	button.embla__prev > svg {
 		translate: 0.75rem 0;
+	}
+
+	@media screen and (min-width: 768px) {
+		section.embla > button > svg {
+			width: 3rem;
+			height: 3rem;
+		}
+
+		img.embla__slide {
+			flex: 0 0 80%;
+			padding: 0 1rem;
+		}
 	}
 
 	@media (hover: hover) {
