@@ -1,32 +1,30 @@
 <script>
 	import ProjectCard from "./ProjectCard.svelte";
-	import Title from "./Title.svelte";
-	import { projects } from "../data/projects";
-	let openedCards = Array(projects.length).fill(false);
 
+	export let array = [];
+
+	// Close other cards
+	let openedCards = Array(array.length).fill(false);
 	function handleCloseCards(index, isOpened) {
 		openedCards = openedCards.map((_, i) => (i === index ? isOpened : false));
 	}
 </script>
 
-<section>
-	<Title innerText="Selected Works" id="work" />
-	{#each projects as project, index}
-		<hr />
-		<ProjectCard
-			title={project.title}
-			subtitle={project.subtitle}
-			date={project.date}
-			description={project.description}
-			video={project.video}
-			image={project.image}
-			link={project.link}
-			checked={openedCards[index]}
-			on:closeCards={(event) => handleCloseCards(index, event.detail)}
-		/>
-	{/each}
+{#each array as arrItem, index}
 	<hr />
-</section>
+	<ProjectCard
+		title={arrItem.title}
+		subtitle={arrItem.subtitle}
+		date={arrItem.date}
+		description={arrItem.description}
+		video={arrItem.video}
+		image={arrItem.image}
+		link={arrItem.link}
+		checked={openedCards[index]}
+		on:closeCards={(event) => handleCloseCards(index, event.detail)}
+	/>
+{/each}
+<hr />
 
 <style>
 	hr {

@@ -67,7 +67,7 @@
 				<p class="mulish">// {date}</p>
 				<hr />
 				<p class="baloo">{description}</p>
-				<FancyLink url={link} innerText={"View Live"} orientation="up" invert />
+				<FancyLink url={link} innerText={"View"} orientation="up" invert />
 			</div>
 		</article>
 	{/if}

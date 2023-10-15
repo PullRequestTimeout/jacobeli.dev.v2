@@ -59,7 +59,7 @@
 		</div>
 	</label>
 
-	<a href={link} class="media" target="_blank">
+	<a href={link} class="media">
 		<div bind:offsetHeight={videoOffset}>
 			<video bind:this={videoElement} class:show={checked} loop muted>
 				<source src={video} type="video/mp4" />
