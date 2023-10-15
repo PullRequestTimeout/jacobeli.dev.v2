@@ -3,7 +3,7 @@
 	import { fade } from "svelte/transition";
 	import { photoStore } from "$lib/photoStore.js";
 	import { clickOutside } from "$lib/clickOutside.js";
-	import IconButton from "../../routes/treehugger/IconButton.svelte";
+	import IconButton from "../../routes/photos/treehugger/IconButton.svelte";
 
 	export let imageNumber = "";
 
