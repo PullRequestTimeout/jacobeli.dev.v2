@@ -1,7 +1,7 @@
 <script>
 	import MailButton from "./MailButton.svelte";
 	import Lightbox from "$lib/components/Lightbox.svelte";
-	import PhotoHero from "./PhotoHero.svelte";
+	import PhotoHero from "$lib/components/PhotoHero.svelte";
 	import Disclaimer from "./Disclaimer.svelte";
 
 	// New Masonry component
@@ -20,7 +20,9 @@
 
 <svelte:head>
 	<title>Treehugger 2023 - Jacob Druery // Creative Developer</title>
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 </svelte:head>
+
 <main>
 	<PhotoHero subtitle={"// Treehugger hare scramble 2023"} />
 	<section class="gallery">
