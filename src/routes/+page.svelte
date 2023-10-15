@@ -5,7 +5,8 @@
 	import About from "$lib/components/About.svelte";
 	import Projects from "$lib/components/Projects.svelte";
 	import Tech from "$lib/components/Tech.svelte";
-	import Loading from "$lib/components/Loading.svelte";
+	import Title from "$lib/components/Title.svelte";
+	import { projects } from "$lib/data/projects";
 </script>
 
 <svelte:head>
@@ -13,17 +14,15 @@
 </svelte:head>
 <main>
 	<Hero />
-	<!-- ^ This has garbage performance -->
 	<Blurb />
-	<Projects />
-	<!-- ^ And this has garbager performance -->
-	<p class="photo-link baloo">...and sometimes I take <a href="/treehugger">photos</a></p>
+	<section>
+		<Title innerText="Selected Works" id="work" />
+		<Projects array={projects} />
+		<p class="photo-link baloo">...and sometimes I take <a href="/photos">photos</a></p>
+	</section>
 	<About />
 	<Tech />
 </main>
-
-<!-- <Loading /> -->
-<!-- There's gotta be a more elegant way of doing this... -->
 
 <style>
 	main {
@@ -45,6 +44,7 @@
 		}
 
 		p.photo-link {
+			margin-top: 1rem;
 			font-size: 1.2rem;
 		}
 	}
