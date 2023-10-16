@@ -7,7 +7,7 @@
 	const images = ["DSC02627.jpg", "DSC03363.jpg", "DSC08900.jpg", "DSC01741.jpg"];
 
 	let emblaApi;
-	const options = { loop: true };
+	const options = { loop: true, duration: 35 };
 	let plugins = [ClassNames()];
 	let resize;
 
