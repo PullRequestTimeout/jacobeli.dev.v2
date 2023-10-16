@@ -8,7 +8,7 @@
 
 <svelte:head>
 	<title>Photos - Jacob Druery // Creative Developer</title>
-	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 </svelte:head>
 
 <PhotoHero subtitle="// Sometimes I take photos" />
