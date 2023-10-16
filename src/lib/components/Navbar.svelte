@@ -109,10 +109,6 @@
 		top: 65%;
 	}
 
-	input[type="checkbox"]:checked ~ nav {
-		transform: translateX(0);
-	}
-
 	input[type="checkbox"] ~ label::after,
 	input[type="checkbox"] ~ label::before {
 		transition: 0.4s ease-in-out;
@@ -143,6 +139,10 @@
 		transition: transform 0.4s ease-in-out;
 		height: 4rem;
 		width: 100vw;
+	}
+
+	input[type="checkbox"]:checked ~ nav {
+		transform: translateX(0);
 	}
 
 	@media screen and (min-width: 768px) {
