@@ -13,12 +13,12 @@
 	}
 </script>
 
-{#if url.charAt(0) == "#"}
+{#if url.charAt(0) == "#" || url.charAt(0) == "/"}
 	<a href={url} class="button baloo" class:invert style="--rotate: {`${rotate}deg`}"
 		><span>{innerText}</span></a
 	>
 {:else}
-	<a href={url} class="button baloo" class:invert style="--rotate: {`${rotate}deg`}"
+	<a href={url} class="button baloo" target="_blank" class:invert style="--rotate: {`${rotate}deg`}"
 		><span>{innerText}</span></a
 	>
 {/if}
