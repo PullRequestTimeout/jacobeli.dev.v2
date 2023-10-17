@@ -4,7 +4,7 @@
 	import { setupTweenOpacity } from "./tweenOpacity.js";
 
 	// Add file names to lengthen slideshow
-	const images = ["DSC02627.jpg", "DSC03363.jpg", "DSC08900.jpg", "DSC01741.jpg"];
+	const images = ["DSC08900.jpg", "DSC03363.jpg", "DSC02627.jpg", "DSC01741.jpg"];
 
 	let emblaApi;
 	const options = { loop: true, duration: 35 };
