@@ -13,6 +13,9 @@
 		photoMenuOpen = false;
 	}
 
+	// Price per photo
+	const photoPrice = 10;
+
 	function purchaseRequestEmail() {
 		const body = `Hi Jacob!
 		
@@ -63,7 +66,7 @@ Thanks!`;
 				</div>
 			{/each}
 			<div class="hr" />
-			<p class="baloo">Price: ${$photoStore.length * 15}</p>
+			<p class="baloo">Price: ${$photoStore.length * photoPrice}</p>
 			<div class="btn-wrap">
 				<IconButton innerText="Request Photos" invert mail callback={purchaseRequestEmail} />
 			</div>
