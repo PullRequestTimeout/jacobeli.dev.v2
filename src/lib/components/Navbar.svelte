@@ -1,5 +1,6 @@
 <script>
 	import { page } from "$app/stores";
+	import { fly } from "svelte/transition";
 
 	let checked = false;
 	const uncheck = () => {
@@ -13,24 +14,28 @@
 		<input type="checkbox" id="navCheckbox" bind:checked />
 		<label for="navCheckbox" />
 
-		<nav>
-			<ul>
-				<li><a on:click={uncheck} href="#work">WORK</a></li>
-				<li><a on:click={uncheck} href="#about">ABOUT</a></li>
-				<li><a on:click={uncheck} href="#contact">CONTACT</a></li>
-			</ul>
-		</nav>
+		{#if checked}
+			<nav transition:fly={{ x: "100%", duration: 500 }}>
+				<ul>
+					<li><a on:click={uncheck} href="#work">WORK</a></li>
+					<li><a on:click={uncheck} href="#about">ABOUT</a></li>
+					<li><a on:click={uncheck} href="#contact">CONTACT</a></li>
+				</ul>
+			</nav>
+		{/if}
 	{:else}
 		<input type="checkbox" id="navCheckbox" bind:checked />
 		<label for="navCheckbox" />
 
-		<nav>
-			<ul>
-				<li><a on:click={uncheck} href="/">HOME</a></li>
-				<li><a on:click={uncheck} href="/photos">PHOTOS</a></li>
-				<li><a on:click={uncheck} href="#contact">CONTACT</a></li>
-			</ul>
-		</nav>
+		{#if checked}
+			<nav transition:fly={{ x: "100%", duration: 500 }}>
+				<ul>
+					<li><a on:click={uncheck} href="/">HOME</a></li>
+					<li><a on:click={uncheck} href="/photos">PHOTOS</a></li>
+					<li><a on:click={uncheck} href="#contact">CONTACT</a></li>
+				</ul>
+			</nav>
+		{/if}
 	{/if}
 </header>
 
@@ -135,15 +140,15 @@
 		place-items: center;
 		right: 0;
 		background-color: var(--clr-white);
-		transform: translateX(100%);
+		/* transform: translateX(100%); */
 		transition: transform 0.4s ease-in-out;
 		height: 4rem;
 		width: 100vw;
 	}
 
-	input[type="checkbox"]:checked ~ nav {
+	/* input[type="checkbox"]:checked ~ nav {
 		transform: translateX(0);
-	}
+	} */
 
 	@media screen and (min-width: 768px) {
 		header {
