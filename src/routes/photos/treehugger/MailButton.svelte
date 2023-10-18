@@ -4,6 +4,10 @@
 	import IconButton from "./IconButton.svelte";
 	import { clickOutside } from "$lib/clickOutside.js";
 
+	// Adjust "y < number" to
+	let y;
+	$: scrollTop = y < 50 ? true : false;
+
 	let photoMenuOpen = false;
 	function handlePhotoMenu() {
 		photoMenuOpen = !photoMenuOpen;
@@ -33,6 +37,8 @@ Thanks!`;
 	}
 </script>
 
+<svelte:window bind:scrollY={y} />
+
 <div
 	use:clickOutside
 	on:click_outside={() => {
@@ -45,13 +51,14 @@ Thanks!`;
 			class="mail"
 			on:click={handlePhotoMenu}
 			aria-label="Open photo request menu"
+			class:top={scrollTop}
 		>
 			<img src="/assets/email.svg" alt="Email icon" />
 			<div class="photo-count baloo">{$photoStore.length}</div>
 		</button>
 	{/if}
 	{#if $photoStore.length > 0 && photoMenuOpen}
-		<div transition:fade={{ duration: 200 }} class="photo-menu">
+		<div transition:fade={{ duration: 200 }} class="photo-menu" class:top={scrollTop}>
 			{#each $photoStore as photo}
 				<div class="photo-list-item">
 					<p class="baloo">#{photo}</p>
@@ -80,8 +87,8 @@ Thanks!`;
 		background-color: var(--clr-gold);
 		border: none;
 		position: fixed;
-		right: 2rem;
-		top: 2rem;
+		right: 1rem;
+		top: 1rem;
 		padding: 0.75rem;
 		transition-duration: 0.2s;
 	}
@@ -92,6 +99,10 @@ Thanks!`;
 
 	button.mail:active {
 		scale: 0.975;
+	}
+
+	.top {
+		translate: 0 3rem;
 	}
 
 	button.mail img {
@@ -122,8 +133,8 @@ Thanks!`;
 
 	div.photo-menu {
 		position: fixed;
-		top: 7rem;
-		right: 2rem;
+		top: 5.6rem;
+		right: 1rem;
 		max-height: 60vh;
 		background-color: var(--clr-white);
 		padding: 2rem;
@@ -132,6 +143,7 @@ Thanks!`;
 		flex-direction: column;
 		gap: 0.5rem;
 		scrollbar-width: thin;
+		transition-duration: 0.2s;
 	}
 
 	div.photo-menu::-webkit-scrollbar {
@@ -189,5 +201,17 @@ Thanks!`;
 		border-bottom: solid 2px var(--clr-black);
 		opacity: 0.75;
 		margin-top: 1rem;
+	}
+
+	@media screen and (min-width: 768px) {
+		button.mail {
+			right: 2rem;
+			top: 2rem;
+		}
+
+		div.photo-menu {
+			top: 6.6rem;
+			right: 2rem;
+		}
 	}
 </style>

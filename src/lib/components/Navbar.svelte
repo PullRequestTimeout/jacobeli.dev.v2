@@ -6,7 +6,16 @@
 	const uncheck = () => {
 		checked = false;
 	};
+
+	let screenWidth;
+	$: if (screenWidth > 768) {
+		checked = true;
+	} else {
+		checked = false;
+	}
 </script>
+
+<svelte:window bind:innerWidth={screenWidth} />
 
 <header class="mulish">
 	<a href="/">JACOBELI.DEV</a>
@@ -154,9 +163,7 @@
 		header {
 			padding: 2rem;
 		}
-	}
 
-	@media screen and (min-width: 768px) {
 		label {
 			display: none;
 		}
@@ -167,6 +174,10 @@
 			background-color: transparent;
 			height: auto;
 			width: auto;
+		}
+
+		nav ul {
+			padding: 0;
 		}
 
 		nav ul li a {
