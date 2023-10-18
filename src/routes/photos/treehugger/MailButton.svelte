@@ -61,7 +61,12 @@ Thanks!`;
 		<div transition:fade={{ duration: 200 }} class="photo-menu" class:top={scrollTop}>
 			{#each $photoStore as photo}
 				<div class="photo-list-item">
-					<p class="baloo">#{photo}</p>
+					<!-- <p class="baloo">#{photo}</p> -->
+					<img
+						src={`/assets/treehugger/DSC${photo}.jpg`}
+						alt={`Image ${photo} thumbnail`}
+						width="100"
+					/>
 					<button
 						class="remove-photo"
 						on:click={() => {
@@ -165,6 +170,10 @@ Thanks!`;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+	}
+
+	div.photo-list-item img {
+		width: 100px;
 	}
 
 	button.remove-photo {
