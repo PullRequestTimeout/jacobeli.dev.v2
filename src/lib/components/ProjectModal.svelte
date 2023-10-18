@@ -1,5 +1,5 @@
 <script>
-	import { createEventDispatcher, onMount } from "svelte";
+	import { createEventDispatcher } from "svelte";
 	import { fly } from "svelte/transition";
 	import FancyLink from "./FancyLink.svelte";
 
