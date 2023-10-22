@@ -1,4 +1,6 @@
 <script>
+	import { dev } from "$app/environment";
+
 	import MailButton from "./MailButton.svelte";
 	import Lightbox from "$lib/components/Lightbox.svelte";
 	import PhotoHero from "$lib/components/PhotoHero.svelte";
@@ -14,8 +16,10 @@
 	const columnSizeRatio = 0;
 	const maxStretchColumnSize = 350;
 
+	// Imports array of image urls
 	export let data;
-	const imageArray = data.imgNumberArray;
+	// Arr of image objects, containing url and imgNo keys
+	const imgObjArr = data.imgObjArr;
 </script>
 
 <svelte:head>
@@ -36,9 +40,9 @@
 			{columnSizeRatio}
 			{maxStretchColumnSize}
 		>
-			{#each imageArray as image}
+			{#each imgObjArr as imgObj}
 				<div class="item">
-					<Lightbox imageNumber={image} />
+					<Lightbox {imgObj} />
 				</div>
 			{/each}
 		</MasonryGrid>

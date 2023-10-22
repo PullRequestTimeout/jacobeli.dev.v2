@@ -5,7 +5,7 @@
 	import { clickOutside } from "$lib/clickOutside.js";
 	import IconButton from "../../routes/photos/treehugger/IconButton.svelte";
 
-	export let imageNumber = "";
+	export let imgObj;
 
 	let element;
 
@@ -14,9 +14,9 @@
 		lightboxOpen = false;
 	}
 
-	function addToPurchase(imgNo) {
+	function addToPurchase(imgObj) {
 		// Converting to a set and back ensures no duplicate photos
-		const addToArr = [...$photoStore, imgNo];
+		const addToArr = [...$photoStore, imgObj];
 		const set = new Set(addToArr);
 		$photoStore = Array.from(set);
 		// close lightbox after button
@@ -33,8 +33,8 @@
 		>
 			<img
 				width="100"
-				src={`/assets/treehugger/DSC${imageNumber}.jpg`}
-				alt={`Image button opens ${imageNumber} lightbox.`}
+				src={imgObj.url}
+				alt={`Image button opens ${imgObj.imgNo} lightbox.`}
 				loading="lazy"
 				class:intersect={intersecting}
 				oncontextmenu="return false;"
@@ -52,16 +52,13 @@
 			}}
 		>
 			<img
-				src={`/assets/treehugger/DSC${imageNumber}.jpg`}
-				alt={`Image number ${imageNumber} from the event.`}
+				src={imgObj.url}
+				alt={`Image number ${imgObj.imgNo} from the event.`}
 				oncontextmenu="return false;"
 			/>
 			<div class="info">
-				<p class="mulish">#{imageNumber}</p>
-				<IconButton
-					callback={() => addToPurchase(imageNumber)}
-					innerText="Add To Purchase Request"
-				/>
+				<p class="mulish">#{imgObj.imgNo}</p>
+				<IconButton callback={() => addToPurchase(imgObj)} innerText="Add To Purchase Request" />
 			</div>
 			<button class="close" on:click={closeLightbox} />
 		</div>

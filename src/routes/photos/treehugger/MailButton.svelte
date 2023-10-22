@@ -25,7 +25,7 @@
 		
 I was hoping to purchase the following photos from the TreeHugger event:
 		
-${$photoStore}
+${$photoStore.map((img) => img.imgNo)}
 		
 Thanks!`;
 
@@ -62,11 +62,7 @@ Thanks!`;
 			{#each $photoStore as photo}
 				<div class="photo-list-item">
 					<!-- <p class="baloo">#{photo}</p> -->
-					<img
-						src={`/assets/treehugger/DSC${photo}.jpg`}
-						alt={`Image ${photo} thumbnail`}
-						width="100"
-					/>
+					<img src={photo.url} alt={`Image ${photo.imgNo} thumbnail`} width="100" />
 					<button
 						class="remove-photo"
 						on:click={() => {
