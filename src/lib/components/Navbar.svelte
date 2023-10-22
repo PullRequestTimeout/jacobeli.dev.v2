@@ -8,43 +8,45 @@
 	};
 
 	let screenWidth;
-	$: if (screenWidth > 768) {
-		checked = true;
-	} else {
-		checked = false;
-	}
 </script>
 
 <svelte:window bind:innerWidth={screenWidth} />
 
 <header class="mulish">
 	<a href="/">JACOBELI.DEV</a>
-	{#if $page.url.pathname === "/"}
+	{#if screenWidth < 768}
 		<input type="checkbox" id="navCheckbox" bind:checked />
 		<label for="navCheckbox" />
 
 		{#if checked}
 			<nav transition:fly={{ x: "100%", duration: 500 }}>
 				<ul>
-					<li><a on:click={uncheck} href="#work">WORK</a></li>
-					<li><a on:click={uncheck} href="#about">ABOUT</a></li>
-					<li><a on:click={uncheck} href="#contact">CONTACT</a></li>
+					{#if $page.url.pathname === "/"}
+						<li><a on:click={uncheck} href="#work">WORK</a></li>
+						<li><a on:click={uncheck} href="#about">ABOUT</a></li>
+						<li><a on:click={uncheck} href="#contact">CONTACT</a></li>
+					{:else}
+						<li><a on:click={uncheck} href="/">HOME</a></li>
+						<li><a on:click={uncheck} href="/photos">PHOTOS</a></li>
+						<li><a on:click={uncheck} href="#contact">CONTACT</a></li>
+					{/if}
 				</ul>
 			</nav>
 		{/if}
 	{:else}
-		<input type="checkbox" id="navCheckbox" bind:checked />
-		<label for="navCheckbox" />
-
-		{#if checked}
-			<nav transition:fly={{ x: "100%", duration: 500 }}>
-				<ul>
-					<li><a on:click={uncheck} href="/">HOME</a></li>
-					<li><a on:click={uncheck} href="/photos">PHOTOS</a></li>
-					<li><a on:click={uncheck} href="#contact">CONTACT</a></li>
-				</ul>
-			</nav>
-		{/if}
+		<nav>
+			<ul>
+				{#if $page.url.pathname === "/"}
+					<li><a href="#work">WORK</a></li>
+					<li><a href="#about">ABOUT</a></li>
+					<li><a href="#contact">CONTACT</a></li>
+				{:else}
+					<li><a href="/">HOME</a></li>
+					<li><a href="/photos">PHOTOS</a></li>
+					<li><a href="#contact">CONTACT</a></li>
+				{/if}
+			</ul>
+		</nav>
 	{/if}
 </header>
 
