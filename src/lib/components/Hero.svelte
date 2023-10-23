@@ -10,7 +10,7 @@
 
 <style>
 	section {
-		height: calc(100svh - 8rem);
+		height: calc(100vh - 8rem);
 		display: grid;
 		align-items: end;
 	}
@@ -51,7 +51,7 @@
 
 	@media screen and (min-width: 768px) {
 		section {
-			height: calc(100svh - 12rem);
+			height: calc(100vh - 12rem);
 		}
 
 		.container {
