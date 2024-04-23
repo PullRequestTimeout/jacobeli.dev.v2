@@ -24,7 +24,7 @@
 		class="mouse"
 		on:mousemove={handlePointerMove}
 		bind:this={blob}
-		role="presentation"
+		aria-hidden="true"
 		src="/assets/glow.png"
 		alt="Glow effect that tracks cursor"
 	/>
