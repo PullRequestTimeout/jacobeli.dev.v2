@@ -1,5 +1,6 @@
 <script>
 	import { page } from "$app/stores";
+	import { slide } from "svelte/transition";
 
 	let open = false;
 	const closeNav = () => (open = false);
@@ -10,19 +11,21 @@
 	<button on:click={() => (open = !open)} aria-label="hamburger menu"
 		><div class="hamburger" class:open /></button
 	>
-	<nav class:open class="small-nav">
-		<ul>
-			{#if $page.url.pathname === "/"}
-				<li><a on:click={closeNav} href="#work">WORK</a></li>
-				<li><a on:click={closeNav} href="#about">ABOUT</a></li>
-				<li><a on:click={closeNav} href="#contact">CONTACT</a></li>
-			{:else}
-				<li><a on:click={closeNav} href="/">HOME</a></li>
-				<li><a on:click={closeNav} href="/photos">PHOTOS</a></li>
-				<li><a on:click={closeNav} href="#contact">CONTACT</a></li>
-			{/if}
-		</ul>
-	</nav>
+	{#if open}
+		<nav class="small-nav" transition:slide={{ duration: 400, axis: "x" }}>
+			<ul>
+				{#if $page.url.pathname === "/"}
+					<li><a on:click={closeNav} href="#work">WORK</a></li>
+					<li><a on:click={closeNav} href="#about">ABOUT</a></li>
+					<li><a on:click={closeNav} href="#contact">CONTACT</a></li>
+				{:else}
+					<li><a on:click={closeNav} href="/">HOME</a></li>
+					<li><a on:click={closeNav} href="/photos">PHOTOS</a></li>
+					<li><a on:click={closeNav} href="#contact">CONTACT</a></li>
+				{/if}
+			</ul>
+		</nav>
+	{/if}
 	<nav class="large-nav">
 		<ul>
 			{#if $page.url.pathname === "/"}
@@ -59,14 +62,12 @@
 		place-items: center;
 		right: 0;
 		background-color: var(--clr-white);
-		transition: transform 0.4s ease-in-out;
 		height: 4rem;
 		width: 100vw;
-		transform: translateX(100%);
 	}
 
-	nav.open {
-		transform: translateX(0);
+	nav.large-nav {
+		display: none;
 	}
 
 	nav ul {
@@ -167,7 +168,7 @@
 
 		nav {
 			position: relative;
-			transform: translateX(0);
+			left: 0;
 			background-color: transparent;
 			height: auto;
 			width: auto;
