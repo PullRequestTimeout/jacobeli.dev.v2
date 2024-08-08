@@ -18,7 +18,7 @@
 	<section>
 		<Title innerText="Selected Works" id="work" />
 		<Projects array={projects} />
-		<p class="photo-link baloo">...and sometimes I take <a href="/photos">photos</a></p>
+		<!-- <p class="photo-link baloo">...and sometimes I take <a href="/photos">photos</a></p> -->
 	</section>
 	<About />
 	<Tech />
@@ -29,24 +29,24 @@
 		padding: 1rem;
 	}
 
-	p.photo-link {
+	/* p.photo-link {
 		text-align: center;
 		font-size: 1rem;
 	}
 
 	p.photo-link a {
 		text-decoration: underline;
-	}
+	} */
 
 	@media screen and (min-width: 768px) {
 		main {
 			padding: 2rem;
 		}
 
-		p.photo-link {
+		/* p.photo-link {
 			margin-top: 1rem;
 			font-size: 1.2rem;
-		}
+		} */
 	}
 
 	/* Breakpoints 320, 640, 768, 1024, 1280, 1536, 1920 */

@@ -28,6 +28,16 @@ export const projects = [
 		image: "/assets/projects/jacobeli.jpg",
 		video: "/assets/projects/jacobelivideo.mp4",
 		link: "/"
+	},
+	{
+		title: "SecretSpots",
+		subtitle: "SvelteKit PWA",
+		date: "2024",
+		description:
+			"Secret Spots is a logbook app built with SvelteKit/Firebase to keep track of locations of note on your adventures. Some similar apps aim to share the locations with other people, which I've often found to result in the locations being poorly looked after, Secret Spots is intended to be a personal logbook of your own locations to avoid mistreatment of the areas.",
+		image: "/assets/projects/secretspots.jpg",
+		video: "",
+		link: "https://secretspots.app/"
 	}
 ];
 
